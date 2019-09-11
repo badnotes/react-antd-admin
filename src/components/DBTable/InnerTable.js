@@ -721,7 +721,14 @@ class InnerTable extends React.PureComponent {
         </Modal>
 
         <Table rowSelection={rowSelection} columns={this.tableSchema} dataSource={this.state.data} pagination={false}
-               loading={tableLoading}/>
+               loading={tableLoading} rowClassName={(record, index) => {
+                if (index % 2 === 1) {
+                  return 'dark-row';
+                }else{
+                  return 'light-row';  
+                }
+              }
+            }/>
       </div>
     );
   }
