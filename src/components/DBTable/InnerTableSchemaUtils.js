@@ -473,6 +473,11 @@ const SchemaUtils = {
           <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" placeholder={field.placeholder || '请选择日期'}
                       disabled={field.disabled}/>
         ), field);
+      case 'date':
+        logger.debug('transform field %o to datetime BETWEEN date component', field);
+         return this.colWrapper(getFieldDecorator => getFieldDecorator(field.key, null)(
+          <DatePicker.RangePicker/>
+        ), field);
       default:  // 默认就是普通的输入框
         logger.debug('transform field %o to varchar input component', field);
         return this.colWrapper((getFieldDecorator, forUpdate) => getFieldDecorator(field.key, {
